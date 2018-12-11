@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tom, Dick, and Harrys' Cookbook</title>
+</head>
+<body>
+    {% for item in data %}
+            <a href="/recipe?id={{item.id}}">
+                {{item.title}} 
+            </a>
+            <p></p>
+    {% endfor %}
+    <a href='/newauthor/'><button>Register a new author!</button></a>
+    <a href='/newrecipe/'><button>Add a new recipe!</button></a>
+    {% if user.is_authenticated %}
+    <a href='/logout/'><button>Logout</button></a>
+    {% endif %}
+</body>
+</html>

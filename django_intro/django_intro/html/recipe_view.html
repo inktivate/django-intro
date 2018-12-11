@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tom, Dick, and Harrys' Cookbook</title>
+</head>
+<body>
+    {% for item in data %}
+        <div>
+            <p>
+                {{item.title}} -- by <a href="/author?id={{item.author_id}}">{{item.author}}</a>
+            </p>
+            <p>
+                Time Required: {{item.time_required}} minutes
+                <p></p>
+                <u>Description</u>
+                <p></p>
+                {{item.description}}
+                <p></p>
+                <u>Instructions:</u>
+                <p></p>
+                {{item.instructions}}
+            </p>
+        </div>
+    {% endfor %}
+</body>
+</html>
