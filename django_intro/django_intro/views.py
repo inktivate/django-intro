@@ -25,7 +25,7 @@ def index_view(request):
         request,
         'index_view.html',
         {'data': recipes, 'user': request.user}
-        )
+    )
 
 
 def author_view(request):
@@ -42,17 +42,17 @@ def new_author(request):
     form = AuthorForm(None or request.POST)
     if form.is_valid():
         data = form.cleaned_data
+        user = User.objects.create_user(
+            data['username'], data['email'], data['password'])
         Author.objects.create(
             username=data['username'],
-            bio=data['bio']
+            bio=data['bio'],
+            user=user,
         )
-        user = User.objects.create_user(
-            data['username'],
-            data['email'],
-            data['password'],
-            )
         return HttpResponseRedirect(reverse('homepage'))
-    return render(request, 'author_form.html', {'form': form, 'user': request.user})
+    return render(request, 'author_form.html', {
+        'form': form, 'user': request.user
+    })
 
 
 @login_required()
@@ -81,7 +81,7 @@ def login_view(request):
         user = authenticate(
             username=data['username'],
             password=data['password']
-            )
+        )
         if user is not None:
             login(request, user)
             return HttpResponseRedirect(request.GET.get('next'))

@@ -26,7 +26,6 @@ class RecipeForm(forms.Form):
         widget=forms.Textarea, label='Instructions', max_length=2000)
     author = forms.ChoiceField(
         label='Author',
-        choices=get_author_list()
         )
     description = forms.CharField(
         widget=forms.Textarea, label='Description', max_length=200)
