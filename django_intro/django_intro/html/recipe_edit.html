@@ -18,12 +18,16 @@
 </style>
 </head>
 <body>
-        <p><a href="/">back to home</a></p>
-    <form action="/newrecipe/" method="post">
+    <p><a href="/">back to home</a></p>
+    {% if user == recipe.author.user %}
+    <form action="/recipe/edit/?id={{ recipe.id }}" method="post">
         {% csrf_token %}
         {{ form }}
         <p></p>
         <input type="submit" value="Submit">
     </form>
+    {% else %}
+    <p>ain't your shit</p>
+    {% endif %}
 </body>
 </html>

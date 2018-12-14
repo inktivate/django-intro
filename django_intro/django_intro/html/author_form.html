@@ -18,6 +18,7 @@
     </style>
 </head>
 <body>
+    <p><a href="/">back to home</a></p>
     {% if user.is_staff %}
     <form action="/newauthor/" method="post">
         {% csrf_token %}

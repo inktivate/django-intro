@@ -7,6 +7,7 @@
     <title>Tom, Dick, and Harrys' Cookbook</title>
 </head>
 <body>
+    <p><a href="/">back to home</a></p>
     {% for item in data %}
         <div>
             <p>
@@ -22,6 +23,14 @@
                 <u>Instructions:</u>
                 <p></p>
                 {{item.instructions}}
+                <p></p>
+                <a href="/recipe/fav/?id={{item.id}}">Add to favorites</a>
+                <p></p>
+                <a href="/recipe/unfav/?id={{item.id}}">Remove from favorites</a>
+                {% if user == item.author.user %}
+                <p></p>
+                <a href="/recipe/edit/?id={{item.id}}">Edit</a>
+                {% endif %}
             </p>
         </div>
     {% endfor %}

@@ -1,35 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Tom, Dick, and Harrys' Cookbook</title>
 </head>
+
 <body>
-    {% for item in data %}
-        <div>
-            <p>
-                {{item.username}}
-            </p>
-            <p>
-                <u>Bio</u>
-                <p></p>
-                <p>
-                    {{item.bio}}
-                </p>
-                <u>Recipes</u>
-                    <ul>
-                    {% for item in recipes %}
-                        <li>
-                            <a href="/recipe?id={{item.id}}">
-                                {{item.title}}
-                            </a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-            </p>
-        </div>
-    {% endfor %}
+    <p><a href="/">back to home</a></p>
+    <div>
+        <h3>{{ author.username }}</h3>
+        <p>
+            <u>Bio</u>
+            <p>{{ author.bio }}</p>
+            <u>Recipes</u>
+            <ul>
+                {% for recipe in recipes %}
+                <li>
+                    <a href="/recipe?id={{ recipe.id }}">
+                        {{ recipe.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+            <u>Favorites</u>
+            <ul>
+                {% for favorite in favorites %}
+                <li>
+                    <a href="/recipe?id={{ favorite.id }}">
+                        {{ favorite.title }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </p>
+    </div>
 </body>
+
 </html>

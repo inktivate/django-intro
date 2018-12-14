@@ -18,7 +18,8 @@ from django.urls import path
 from django.urls import re_path
 from django_intro.views import (recipe_view, index_view, author_view,
                                 new_author, new_recipe, login_view,
-                                logout_view)
+                                logout_view, recipe_fav, recipe_unfav,
+                                recipe_edit)
 from django_intro.models import Author, Recipe
 
 admin.site.register(Author)
@@ -28,6 +29,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r'^recipe/$', recipe_view),
     re_path(r'^author/$', author_view),
+    re_path(r'^recipe/fav/$', recipe_fav),
+    re_path(r'^recipe/unfav/$', recipe_unfav),
+    re_path(r'^recipe/edit/$', recipe_edit),
     path('', index_view, name='homepage'),
     path('newauthor/', new_author, name='newauthor'),
     path('newrecipe/', new_recipe, name='newrecipe'),
