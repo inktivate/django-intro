@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 
 
 from django_intro.models import Recipe, Author
-from django_intro.forms import AuthorForm, RecipeForm, LoginForm, RecipeEditForm
+from django_intro.forms import (AuthorForm, RecipeForm,
+                                LoginForm, RecipeEditForm)
 
 
 def get_item(request):
@@ -16,7 +17,10 @@ def get_item(request):
 def recipe_view(request):
     recipe_id = get_item(request)
     recipe = Recipe.objects.filter(id=recipe_id)
-    return render(request, 'recipe_view.html', {'data': recipe, 'user': request.user})
+    return render(request, 'recipe_view.html', {
+        'data': recipe,
+        'user': request.user,
+    })
 
 
 def index_view(request):
